@@ -9284,7 +9284,13 @@ a:hover, a:focus {
 /*------------------------------------------------*/
 .about-me {
   background-color: #ffe9c8;
-  padding-bottom:350px;
+}
+
+.about-me h2{
+  font-family: "Josefin Slab Light";
+  color: #bc341b;
+  font-size: 3em;
+  line-height: 1.6;
 }
 
 .social .sub-heading {
