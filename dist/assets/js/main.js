@@ -15,7 +15,7 @@
 		if( $('.map-canvas').length > 0) {
 			
 			var geocoder = new google.maps.Geocoder();
-			var address = '36 rue de la pissarde 38760 Varces';
+			var address = '114 avenue de la republique 38170 Sessinet-Pariset';
 			var contentString = '<div class="map-detail"><strong>Mon adresse :</strong><p>' + address + '</p></div>';
 			
 			geocoder.geocode({'address': address }, function(results, status) {

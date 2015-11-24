@@ -9285,16 +9285,26 @@ a:hover, a:focus {
 .about-me {
   background-color: #ffe9c8;
 }
-
-.about-me h2{
+.passion {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.passion h2 {
+  color: #444;
+  font-family:'Open Sans', Arial, sans-serif;
+  font-weight: normal;
+  font-size:22px; 
+  line-height:40px; 
+}
+.interest h2 {
   font-family: "Josefin Slab Light";
   color: #bc341b;
   font-size: 3em;
   line-height: 1.6;
 }
-
 .social .sub-heading {
   margin-top: 0;
+  font-size:16px;
 }
 @media (min-width: 768px) {
   .social .sub-heading {
