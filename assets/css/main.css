@@ -1,13 +1,13 @@
-/*	
+/*
 *	############################################################################
-*	
+*
 *	CVilized Resume/CV HTML Template Style
 *	---------------------------------------------------------------------
 *
 *	Version		1.0
 *	Author		The Develovers
 *	Copyright	Copyright 2013 The Develovers
-*	
+*
 *	############################################################################
 */
 /*
@@ -9199,6 +9199,10 @@ a:hover, a:focus {
   }
 }
 
+.header h2 a {
+  color: white;
+}
+
 .header {
   margin-bottom: 0;
   color: white;
@@ -9293,8 +9297,8 @@ a:hover, a:focus {
   color: #444;
   font-family:'Open Sans', Arial, sans-serif;
   font-weight: normal;
-  font-size:22px; 
-  line-height:40px; 
+  font-size:22px;
+  line-height:40px;
 }
 .interest h2 {
   font-family: "Josefin Slab Light";
