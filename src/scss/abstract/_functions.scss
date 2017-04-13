@@ -1,0 +1,154 @@
+/// Returns the opposite direction of every direction in `$directions`.
+///
+/// @param {List} $directions - Positions to reverse
+///
+/// @require map_has_key
+/// @require map-get
+///
+/// @todo Remove requires once we move to Sass 3.3.
+///
+/// @return {List | Null}
+///
+/// @example scss - Find the opposite direction of `top right`.
+/// element {
+///   background-position: opposite-direction(top right);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   background-position: bottom left;
+/// }
+
+@function opposite-direction($directions) {
+  $opposite-directions: ();
+  $direction-map: (
+    'top'    'bottom',
+    'right'    'left',
+    'bottom'    'top',
+    'left'    'right',
+    'ltr'       'rtl',
+    'rtl'       'ltr'
+  );
+
+  @each $direction in $directions {
+    @if not map_has_key($direction-map, $direction) {
+      @warn 'No opposite direction can be found for `#{$direction}`.';
+      @return null;
+    }
+
+    $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+  }
+
+  @return $opposite-directions;
+}
+
+
+/// Clamp `$value` between `$min` and `$max`.
+///
+/// @param {Number} $value - Value to clamp between `$min` and `$max`
+/// @param {Number} $min   - Minimum value
+/// @param {Number} $max   - Maximum value
+///
+/// @throws All parameters must be numbers for `clamp`.
+///
+/// @return {Number | Null}
+
+@function clamp($value, $min, $max) {
+
+  @if type-of($value) != 'number' or type-of($min) != 'number' or type-of($max) != 'number' {
+    @warn 'All parameters must be numbers for `clamp`.';
+    @return null;
+  }
+
+  @return if($value > $max, $max, if($value < $min, $min, $value));
+}
+
+
+/// Returns an absolute path based on the type of asset
+/// given (`$type`) and the relative path (`$path`).
+///
+/// @access private
+///
+/// @param {String} $type - Asset type
+/// @param {String} $path - Asset path
+///
+/// @require $base-path
+///
+/// @return {String} Actually a `url()` CSS function
+
+@function asset($type, $path) {
+  @return url($base-path + $type + $path);
+}
+
+
+/// Returns an absolute path for a file (at `$path`) in the `images/` folder.
+///
+/// @param {String} $path - Image path
+///
+/// @require {function} asset
+///
+/// @return {String}
+///
+/// @example scss - Defines a background-image.
+/// element {
+///   background-image: image('game/201408/game-over.png');
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   background-image: url('http://media1.tootici.fr/bundles/squarecofront/images/game/201408/game-over.png');
+/// }
+
+@function image($path) {
+  @return asset('images/', $path);
+}
+
+
+/// Returns an absolute path for a file (at `$path`) in the `fonts/` folder.
+///
+/// @param {String} $path - Font path
+///
+/// @require {function} asset
+///
+/// @return {String}
+
+@function font($path) {
+  @return asset('fonts/', $path);
+}
+
+/// Helper to manage themes.
+/// Tries to fetch the value associated to succession of `$keys` in `$map`.
+/// See `_variables.scss` -> `$themes` map.
+///
+/// @group getters
+///
+/// @param {ArgList} $keys - Keys to fetch
+///
+/// @require $themes
+/// @require map-fetch
+///
+/// @return {*}
+///
+/// @example scss - Fetch the primary color from shopping theme.
+/// element {
+///   color: theme('shopping', 'primary');
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   color: #41cce4;
+/// }
+
+@function theme($theme, $key) {
+  @return map-fetch($themes, $theme, $key);
+}
+
+/// Tests whether the value is a valid length.
+///
+/// @param {*} $value - Value to test
+///
+/// @return {Bool}
+
+@function is-valid-length($value) {
+  @return (type-of($value) == 'number' and not unitless($value)) or index('auto' 'initial' 'inherit' 0, $value);
+}

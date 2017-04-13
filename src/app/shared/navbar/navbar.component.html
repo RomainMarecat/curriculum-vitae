@@ -1,0 +1,39 @@
+<header>
+  <nav class="red lighten-2">
+    <div class="nav-wrapper">
+      <a [routerLink]="['/']" class="brand-logo center">
+        Curriculum Vitae
+      </a>
+      <ul class="left">
+        <li>
+          <a href="#" materialize="sideNav" [materializeParams]="[{edge:'left', closeOnClick: true, draggable: true, show: true}]" data-activates="hopbox-pro-sidenav" id="burger-nav">
+            <i class="material-icons grey-text text-darken-3">menu</i>
+          </a>
+        </li>
+      </ul>
+      <ul class="right">
+      </ul>
+    </div>
+  </nav>
+</header>
+<ul class="side-nav" id="hopbox-pro-sidenav">
+  <li>
+    <div class="userView">
+      <div class="background">
+        <img src="/assets/images/sidenav-bg.jpg">
+      </div>
+      <a [routerLink]="'/'"><img class="circle" src="/assets/images/sidenav-profile.jpg"></a>
+      <a [routerLink]="'/'"><span class="white-text name">Romain Marecat</span></a>
+      <a [routerLink]="'/'"><span class="white-text email">romain.marecat@gmail.com</span></a>
+    </div>
+  </li>
+  <!--   <li>
+    <a [routerLink]="['/projects']">Projets</a>
+  </li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li>
+    <a [routerLink]="['/projects']">Projets</a>
+  </li> -->
+</ul>

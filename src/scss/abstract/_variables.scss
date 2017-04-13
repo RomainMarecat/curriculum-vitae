@@ -1,0 +1,97 @@
+// main colors
+$primary-accent-color: #cf5037;
+$secondary-accent-color: #2067CA;
+$base-font-color-dark: #3c3c3c;
+$base-font-color-light: #fff;
+$base-heading-font-color: #bc341b;
+$base-subheading-font-color: #333;
+$base-button-font-color: #fff;
+$base-icon-color: #aea08b;
+$main-nav-font-color: #fff;
+$hero-font-color: #fff;
+$about-me-bg-color: #ffe9c8;
+$resume-bg-color: #f4debe;
+$projects-bg-color: #000000;
+$contacts-bg-color: #eed9b8;
+// fonts
+$base-font-family: "Helvetica Neue",
+Helvetica,
+Arial,
+sans-serif;
+$base-font-size: 14px;
+$secondary-font-family-bold: "Josefin Slab Bold";
+$secondary-font-family-light: "Josefin Slab Light";
+// form
+$base-field-bg-color: #f2f2f2;
+$base-field-font-color: #a18f72;
+// header
+$hero-img-background: "hero-bg.png";
+// timeline
+$bg-line-url: 'vertical-line.png'; // the vertical line of the timeline
+// google map
+$map-height: 400px;
+/// White
+/// @type Color
+$white: #fff;
+/// dark
+/// @type Color
+$black: #000;
+/// blue
+/// @type Color
+$facebook-color: #3b5998;
+/// blue
+/// @type Color
+$twitter-color: #55acee;
+/// red
+/// @type Color
+$google-color: #ff4343;
+/// brown
+/// @type Color
+$instagram-color: #bc2a8d;
+/// Font stacks map.
+/// See `_functions.scss` -> `font-stack()` function.
+///
+/// @type Map
+///
+/// @prop {List} heading ('Droid Sans', 'Century Gothic', 'CenturyGothic', 'AppleGothic', sans-serif) - Font stack for headings
+/// @prop {List} content ('Droid Sans', 'Helvetica', 'Arial', sans-serif) - Font stack for content
+$font-stacks: ( 'heading' ('Lato', sans-serif), 'content' ('Lato', sans-serif));
+/// Breakpoints.
+/// See `_functions.scss` -> `breakpoint()` function.
+///
+/// @type Map
+///
+/// @prop {List} tiny   (max-width  767px) - Most smartphones
+/// @prop {List} small  (min-width  768px) - Tablets and some landscape smartphones
+/// @prop {List} medium (min-width  992px) - Small desktop screens and large tablets
+/// @prop {List} large  (min-width 1200px) - All desktop screens
+$breakpoints: ( 'tiny': (max-width 767px), 'small': ( min-width: 767px), 'medium': ( min-width: 992px), 'large': ( min-width: 1200px)) !default;
+/// Z-indexes layers.
+/// See `_functions.scss` -> `z()` function.
+///
+/// @type Map
+///
+/// @prop {Number} goku     (9001) - Intended for fun, don't abuse this
+/// @prop {Number} modal    (5000) - Intended for modals
+/// @prop {Number} dropdown (4000) - Intended for dropdowns
+/// @prop {Number} social   (3000) - Intented for fixed social buttons
+/// @prop {Number} default     (1) - Intented for any standard layering
+/// @prop {Number} below      (-1) - Intented for anything below the default layer
+$z-indexes: ( 'goku' 9001, 'modal' 5000, 'dropdown' 4000, 'social' 3000, 'default' 1, 'below' -1);
+/// Themes.
+/// See `_functions.scss` -> `theme()` function.
+///
+/// @type Map
+///
+/// @access private
+///
+/// @prop {Map}    default                        - Default theme
+/// @prop {Color}  default.primary     (#16a4e2)  - Primary color from default theme
+/// @prop {Color}  default.secondary   (#16a4e2)  - Secondary color from default theme
+$themes: ( 'default' ( 'primary' #16a4e2, 'secondary' #16a4e2));
+/// Base path.
+///
+/// @type String
+///
+/// @access private
+$base-path: '/';

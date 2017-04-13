@@ -1,0 +1,435 @@
+/// Mixin to size elements.
+///
+/// @group shorthands
+///
+/// @param {Number} $width           - Width
+/// @param {Number} $height ($width) - Height
+///
+/// @output `width` and `height`.
+///
+/// @example scss - Give an element 10em * 10em dimensions.
+/// element {
+///   @include size(10em);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   width: 10em;
+///   height: 10em;
+/// }
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+/// Shorthand for positioning. Not meant to be used directly.
+///
+/// @group shorthands
+///
+/// @access private
+///
+/// @param {String} $position - Position type (either `absolute`, `fixed` or `relative`)
+/// @param {Length} $top (null) - Top offset
+/// @param {Length} $right (null) - Right offset
+/// @param {Length} $bottom (null) - Bottom offset
+/// @param {Length} $left (null) - Left offset
+///
+/// @output `position` and any of `top`, `right`, `bottom` and `left`.
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+/// Shorthand for absolute positioning.
+///
+/// @group shorthands
+///
+/// @require {mixin} position
+///
+/// @param {Arglist} $args - List of offsets and values
+///
+/// @output `position` and any of `top`, `right`, `bottom` and `left`.
+///
+/// @example scss - Absolutely position an element 1em from top and 1em from left
+/// element {
+///   @include absolute($top: 1em, $left: 1em);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   position: absolute;
+///   top: 1em;
+///   left: 1em;
+/// }
+@mixin absolute($args...) {
+    @include position(absolute, $args...);
+}
+
+/// Shorthand for relative positioning.
+///
+/// @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Related article
+///
+/// @group shorthands
+///
+/// @require {mixin} position
+///
+/// @param {Arglist} $args - List of offsets and values
+///
+/// @output `position` and any of `top`, `right`, `bottom` and `left`.
+///
+/// @example scss - Give an element 1em from top and 1em from left offsets.
+/// element {
+///   @include relative($top: 1em, $left: 1em);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   position: relative;
+///   top: 1em;
+///   left: 1em;
+/// }
+@mixin relative($args...) {
+    @include position(relative, $args...);
+}
+
+/// Shorthand for fixed positioning.
+///
+/// @link http://hugogiraudel.com/2014/05/19/new-offsets-sass-mixin/ Related article
+///
+/// @group shorthands
+///
+/// @require {mixin} position
+///
+/// @param {Arglist} $args - List of offsets and values
+///
+/// @output `position` and any of `top`, `right`, `bottom` and `left`.
+///
+/// @example scss - Fix an element in top left corner, with 1em from top and 1em from left offsets.
+/// element {
+///   @include fixed($top: 1em, $left: 1em);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   position: fixed;
+///   top: 1em;
+///   left: 1em;
+/// }
+@mixin fixed($args...) {
+    @include position(fixed, $args...);
+}
+
+/// Mixin to fake CSS triangles with border hacks.
+///
+/// @require {mixin} absolute
+/// @require {mixin} size
+/// @require {function} opposite-direction
+/// @require {function} z
+///
+/// @param {String} $direction                - Triangle direction
+/// @param {List}   $position                 - Triangle position
+/// @param {Color}  $color     (currentcolor) - Triangle color
+/// @param {Number} $size      (1em)          - Triangle size
+///
+/// @throw Direction must be one of `top`, `right`, `bottom` or `left`.
+///
+/// @output Content of `size` mixin, content of `absolute` mixin, `content`, `z-index`, and borders.
+@mixin triangle($direction, $position, $color: currentColor, $size: 1em) {
+    $border: $size solid transparent;
+    @if not index(top right bottom left, $direction) {
+        @warn 'Direction must be one of `top`, `right`, `bottom` or `left`.';
+    }
+    @else {
+        @include absolute($position...);
+        @include size(0);
+        content: '';
+        z-index: z('default') + 1;
+        border-#{opposite-direction($direction)}: ($size * 1.5) solid $color;
+        @if $direction==top or $direction==bottom {
+            border-left: $border;
+            border-right: $border;
+        }
+        @else if $direction==right or $direction==left {
+            border-bottom: $border;
+            border-top: $border;
+        }
+    }
+}
+
+/// Mixin to create both a class and a Sass placeholder at once.
+///
+/// @access private
+///
+/// @param {String} $name - Helper name
+///
+/// @output A class selector block.
+@mixin helper($name) {
+    .#{$name},
+    %#{$name} {
+        @content;
+    }
+}
+
+/// Mixin to handle cross browser keyframes for CSS animations.
+///
+/// @param {String} $name - Animation name
+///
+/// @output A `@keyframes` block.
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+/// Mixin to prefix properties that are not prefixed by Compass
+///
+/// @group cross-browser
+///
+/// @param {String} $property                   - Property to prefix
+/// @param {*}      $value                      - Value for property
+/// @param {List}   $vendors  (webkit moz ms o) - Vendor prefixes to output
+///
+/// @output At best, only the unprefixed declaration. At worst, the unprefixed + 4 prefixed declarations.
+///
+/// @example scss - Prefix a `transform` for Webkit and Microsoft.
+/// element {
+///   @include prefixer(transform, rotate(1turn), webkit ms);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   -webkit-transform: rotate(1turn);
+///   -ms-transform: rotate(1turn);
+///   transform: rotate(1turn);
+/// }
+@mixin prefixer($property, $value, $vendors: webkit moz ms o) {
+    @if $vendors {
+        @each $vendor in $vendors {
+            #{'-' + $vendor + '-' + $property}: #{$value};
+        }
+    }
+    #{$property}: #{$value};
+}
+
+/// Mixin to handle element queries breakpoints.
+/// Mostly syntactic sugar to avoid typing the data-attribute selector every time.
+///
+/// @param {String} $breakpoint - EQ keyword
+///
+/// @output A data-attribute based selector relying on `eq.js`.
+///
+/// @example scss - Size an element when it triggers a 'large' EQ breakpoint.
+/// element {
+///   @include eq('large') {
+///     width: 25%;
+///   }
+/// }
+///
+/// @example css - Resulting CSS.
+/// [data-eq-state='large'] element {
+///   width: 25%;
+/// }
+@mixin eq($breakpoint) {
+    [data-eq-state='#{$breakpoint}'] & {
+        @content;
+    }
+}
+
+/// Mixin for cross-browser opacity (IE 8).
+/// Clamps the value between 0 and 1.
+///
+/// @group cross-browser
+///
+/// @require {function} clamp
+///
+/// @param {Number} $opacity - Opacity level, between 0 and 1
+///
+/// @output `opacity` and `-ms-filter` for Internet Explorer 8.
+///
+/// @example scss - Cross browser opacity.
+/// element {
+///   @include opacity(0);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
+///   opacity: 0;
+/// }
+@mixin opacity($opacity) {
+    $opacity: clamp($opacity, 0, 1);
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})';
+    opacity: $opacity;
+}
+
+/// Mixin importing a `$font-name` font from `$file-name` file.
+///
+/// @param {String} $font-name - Font name, meant to be used in `font-family` declarations
+/// @param {String} $file-name - File name without the extension
+///
+/// @require {function} font
+///
+/// @output A `@font-face` block.
+@mixin font($font-name, $file-name) {
+    @font-face {
+        font-family: quote($font-name);
+        src: font($file-name + '.eot');
+        src: font($file-name + '.eot?#iefix') format('embedded-opentype'),
+        font($file-name + '.woff') format('woff'),
+        font($file-name + '.ttf') format('truetype'),
+        font($file-name + '.svg##{$font-name}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+/// Mixin handling inline-block and vertical-align at once.
+/// If no align is specified, then the `vertical-align` property won't be output.
+///
+/// @group shorthands
+///
+/// @param {String} $align (null) - Vertical align
+///
+/// @output `display` and possibly `vertical-align`.
+///
+/// @example scss - Inline-block with middle vertical-align.
+/// element {
+///   @include inline-block(middle);
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   display: inline-block;
+///   vertical-align: middle;
+/// }
+@mixin inline-block($align: null) {
+    display: inline-block;
+    vertical-align: $align;
+}
+
+/// Modernizr mixin when a feature is supported.
+///
+/// @param {ArgList} $features - Features that need to be supported
+///
+/// @output A selector based on Modernizr.
+@mixin yep($features...) {
+    $selector: '';
+    @each $feature in $features {
+        $selector: #{$selector + '.' + $feature};
+    }
+    #{$selector} & {
+        @content;
+    }
+}
+
+/// Modernizr mixin when a feature is not supported.
+///
+/// @param {ArgList} $features - Features that shouldn't be supported
+///
+/// @output A selector based on Modernizr.
+@mixin nope($features...) {
+    @each $feature in $features {
+        #{'.no-' + $feature} {
+            @content;
+        }
+    }
+}
+
+/// Bind all events, including self state if `$self` is true.
+///
+/// @author Harry Roberts
+///
+/// @param {Bool} $self - Include self state
+///
+/// @output :hover, :active and :focus
+///
+/// @example scss - Event states
+/// element {
+///   color: blue;
+///
+///   @include on-event {
+///     color: red;
+///   }
+/// }
+///
+/// @example css - Resulting CSS.
+/// element {
+///   color: blue;
+/// }
+///
+/// element:hover, element:active, element:focus {
+///   color: red;
+/// }
+@mixin on-event($self: false) {
+    @if $self !=false {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+    @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+/// Define a context for current selector
+///
+/// @param {String} $context - Context
+///
+/// @output Selector
+///
+/// @example scss - Disabled specific context
+/// element {
+///   @include when-inside('[disabled]') {
+///     color: red;
+///   }
+/// }
+///
+/// @example css - Resulting CSS.
+/// [disabled] element {
+///   color: red;
+/// }
+@mixin when-inside($context) {
+    #{$context} & {
+        @content;
+    }
+}
+
+/// Create border radius with angular
+///
+/// @param {String} $context - Context
+///
+/// @output border-radius
+///
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin respond-to($breakpoint) {
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Prints a media query based on the value
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    // If the key doesn't exist in the map
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. " + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}

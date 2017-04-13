@@ -1,0 +1,13 @@
+button.btn-tiny {
+    height: 25px !important;
+    width: 25px !important;
+    line-height: 25px !important;
+}
+
+@include respond-to('small') {
+    button.btn-tiny {
+        height: 40px !important;
+        width: 40px !important;
+        line-height: 40px !important;
+    }
+}

@@ -1,0 +1,86 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin background-size($background-size) {
+    -webkit-background-size: $background-size;
+    -moz-background-size: $background-size;
+    -o-background-size: $background-size;
+    background-size: $background-size;
+}
+
+@mixin inline-block() {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    *display: inline;
+}
+
+$secondary-font-family-bold: "Josefin Slab Bold";
+$base-font-color-light: #fff;
+$hero-img-background: "/assets/images/hero-bg.png";
+.jumbotron {
+    @include background-size(cover);
+    background: {
+        image: url($hero-img-background);
+        repeat: no-repeat;
+        position: top center;
+    }
+    padding-top: 125px;
+    padding-bottom: 100px;
+    text-align: center;
+    @media (min-width: 992px) {
+        text-align: left;
+    }
+}
+
+.header {
+    margin-bottom: 0;
+    color: $base-font-color-light;
+    .right {
+        padding-top: 3em;
+    }
+    .heading {
+        font-family: $secondary-font-family-bold;
+        font-size: 4.5em !important;
+        margin-bottom: 0;
+        @media (min-width: 768px) {
+            font-size: 5.5em !important;
+        }
+    }
+    p {
+        font-size: 2em;
+        a {
+            color: $base-font-color-light;
+        }
+    }
+}
+
+.avatar {
+    @include border-radius(50%);
+    @include inline-block;
+    border: 20px solid rgba(#000, 0.1);
+    img {
+        @include border-radius(225px);
+        width: 100%;
+        margin: 0 auto;
+        @media (min-width: 992px) {
+            margin: 0;
+        }
+    }
+}
+
+.ie8 {
+    .avatar {
+        width: 80%;
+        border: 20px solid lighten(#000, 50%);
+        margin-top: 50px;
+        img {
+            width: 100%;
+        }
+    }
+}
