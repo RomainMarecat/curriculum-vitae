@@ -1,0 +1,40 @@
+<div class="section background">
+  <div class="layer">
+    <div class="row">
+      <div class="col s12">
+        <h1 class="center white-text">Mon expérience</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6" *ngFor="let exp of experiences">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light center-block">
+              <img class="activator responsive-img pulse" [src]="exp.img.src" [alt]="exp.img.alt">
+            </div>
+            <div class="card-content activator center">
+              <span class="card-title black-text lighten-2">{{ exp.title }}</span>
+              <p class="activator">
+                {{ exp.job1 }}
+                <span *ngIf="exp.year"> 
+                - {{ exp.year }} 
+                <span *ngIf="exp.year === 1">an</span>
+                <span *ngIf="exp.year > 1">ans</span>
+                </span>
+                <span *ngIf="exp.month"> - {{ exp.month }} mois</span>
+              </p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">
+                {{ exp.title }} 
+                <i class="material-icons right">close</i>
+              </span>
+              <p>{{ exp.description }}</p>
+              <div [innerHtml]="exp.description2" *ngIf="exp.description2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
