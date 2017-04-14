@@ -38,7 +38,7 @@ export class AboutComponent implements OnInit {
         </ul>`,
       img: {
         alt: `Angular 2`,
-        src: `/assets/images/angular.svg`
+        src: `assets/images/angular.svg`
       }
     }, {
       title: `Square Connexion`,
@@ -62,7 +62,7 @@ export class AboutComponent implements OnInit {
       <p>Développement de la page d'accueil et du menu de navigation avec le framework AngularJs</p>`,
       img: {
         alt: `Symfony 2`,
-        src: `/assets/images/symfony.svg`
+        src: `assets/images/symfony.svg`
       }
     }, {
       title: `Mairie de Voreppe`,
@@ -79,7 +79,7 @@ export class AboutComponent implements OnInit {
         </ul>`,
       img: {
         alt: `Symfony 2`,
-        src: `/assets/images/symfony.svg`
+        src: `assets/images/symfony.svg`
       }
     }, {
       title: `Conseil général de l'Isère`,
@@ -89,7 +89,7 @@ export class AboutComponent implements OnInit {
 d’applications : export de données, CRUD des données`,
       img: {
         alt: `Symfony 2`,
-        src: `/assets/images/symfony.svg`
+        src: `assets/images/symfony.svg`
       }
     }];
   }
