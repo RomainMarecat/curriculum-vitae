@@ -74,8 +74,9 @@ $hero-img-background: "/assets/images/hero-bg.png";
     @include border-radius(50%);
     @include inline-block;
     border: 20px solid rgba(#000, 0.1);
+    width: 80%;
     img {
-        @include border-radius(225px);
+        @include border-radius(50%);
         width: 100%;
         margin: 0 auto;
         @media (min-width: 992px) {
