@@ -16,8 +16,19 @@ export class AboutComponent implements OnInit {
       job2: `Développeur Web Symfony 2 et 3`,
       year: 1,
       description: `Développement d'une application mobile et plus rapide qui traite la réservation et la gestion des agendas de moniteurs de ski basée sur le Framework Angular (2).`,
-      description2: `<p>Choisir son moniteur de sport avec la plateforme ZeeMono.</p>
-        <p>Développement Back-end d'une API REST pour le site web et l'agenda ZeeMono.</p>
+      description2: `
+      <ul>
+        <li>Ajout d'une application pour les moniteurs (Angular)</li>
+        <li>Ajout d'une application pour les administrateurs (Angular)</li>
+        <li>Formulaires (Data-binding)</li>
+        <li>Connexion utilisateur avec Auth0 </li>
+        <li>Datatables</li>
+        <li>Manipulation d'images avec Cloudinary</li>
+        <li>Internationalisation</li>
+        <li>Mobile Responsive</li>
+        <li>Redux</li>
+        <li>Refonte de l'api en Middleware (Express Js + MongoDB)</li>
+      <p>Développement Back-end d'une API REST pour le site web et l'agenda ZeeMono.</p>
         <ul>
           <li>Scrapping (Symfony 3)</li>
           <li>Refonte du site (Symfony 2.8)</li>
