@@ -14,10 +14,10 @@
             </div>
             <div class="card-content activator center">
               <span class="card-title black-text lighten-2">{{ exp.title }}</span>
-              <p class="activator">
+              <p class="activator" angulartics2On="click" angularticsEvent="CardRevealClick" angularticsCategory="{{ exp.job1 }}" [angularticsProperties]="{label: 'card_reveal'}">
                 {{ exp.job1 }}
-                <span *ngIf="exp.year"> 
-                - {{ exp.year }} 
+                <span *ngIf="exp.year">
+                - {{ exp.year }}
                 <span *ngIf="exp.year === 1">an</span>
                 <span *ngIf="exp.year > 1">ans</span>
                 </span>
@@ -26,7 +26,7 @@
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">
-                {{ exp.title }} 
+                {{ exp.title }}
                 <i class="material-icons right">close</i>
               </span>
               <p>{{ exp.description }}</p>

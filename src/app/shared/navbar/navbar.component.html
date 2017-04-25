@@ -1,17 +1,15 @@
 <header>
   <nav class="blue-grey">
     <div class="nav-wrapper">
-      <a [routerLink]="['/']" class="brand-logo center">
-        Curriculum Vitae
+      <a [routerLink]="['/']" class="brand-logo center" angulartics2On="click" angularticsEvent="Homepage" angularticsCategory="{{ homepage_link }}" [angularticsProperties]="{label: 'internal_link'}">
+        {{ toolbar.title }}
       </a>
       <ul class="left">
         <li>
-          <a href="#" materialize="sideNav" [materializeParams]="[{edge:'left', closeOnClick: true, draggable: true, show: true}]" data-activates="hopbox-pro-sidenav" id="burger-nav">
+          <a href="#" materialize="sideNav" [materializeParams]="[{edge:'left', closeOnClick: true, draggable: true, show: true}]" data-activates="hopbox-pro-sidenav" id="burger-nav" angulartics2On="click" angularticsEvent="BurgerNav" angularticsCategory="{{ open_navbar }}" [angularticsProperties]="{label: 'menu'}">
             <i class="material-icons white-text">menu</i>
           </a>
         </li>
-      </ul>
-      <ul class="right">
       </ul>
     </div>
   </nav>
@@ -22,12 +20,18 @@
       <div class="background">
         <img src="assets/images/sidenav-bg.jpg">
       </div>
-      <a [routerLink]="'/'"><img class="circle" src="assets/images/sidenav-profile.jpg"></a>
-      <a [routerLink]="'/'"><span class="white-text name">Romain Marecat</span></a>
-      <a [routerLink]="'/'"><span class="white-text email">romain.marecat@gmail.com</span></a>
+      <a [routerLink]="'/'" angulartics2On="click" angularticsEvent="Homepage" angularticsCategory="{{ sidenav.src }}" [angularticsProperties]="{label: 'internal_link'}">
+        <img class="circle" [src]="sidenav.src" *ngIf="sidenav">
+      </a>
+      <a [routerLink]="'/'" angulartics2On="click" angularticsEvent="Homepage" angularticsCategory="{{ sidenav.name }}" [angularticsProperties]="{label: 'internal_link'}">
+        <span class="white-text name" *ngIf="sidenav">{{ sidenav.name }}</span>
+      </a>
+      <a [routerLink]="'/'" angulartics2On="click" angularticsEvent="Homepage" angularticsCategory="{{ sidenav.email }}" [angularticsProperties]="{label: 'internal_link'}">
+        <span class="white-text email" *ngIf="sidenav">{{ sidenav.email }}</span>
+      </a>
     </div>
   </li>
   <li>
-    <a [routerLink]="['/about']">Projets</a>
+    <a [routerLink]="['/experience']" angulartics2On="click" angularticsEvent="Expérience link" angularticsCategory="Expérience" [angularticsProperties]="{label: 'internal_link'}">Mon Expérience</a>
   </li>
 </ul>
