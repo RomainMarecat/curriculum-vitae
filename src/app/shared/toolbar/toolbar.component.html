@@ -1,0 +1,9 @@
+<md-toolbar color="primary">
+  <a md-button class="menu-button" (click)="toggleSidenav()">
+    <md-icon>menu</md-icon>
+  </a>
+  <a [routerLink]="['/']" class="title brand-logo center">
+    Curriculum Vitae
+  </a>
+  <button md-button (click)="toggleTheme()">Switch Theme</button>
+</md-toolbar>

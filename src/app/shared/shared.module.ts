@@ -4,8 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterializeModule } from 'angular2-materialize';
-import { NavbarComponent } from './navbar/navbar.component';
+import { MaterialModule } from '@angular/material';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SidenavService } from './service/sidenav.service';
+import { ThemeService } from './service/theme.service';
 
 @NgModule({
   imports: [
@@ -13,10 +16,21 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule,
-    MaterializeModule,
+    MaterialModule.forRoot(),
+    RouterModule
   ],
-  declarations: [NavbarComponent],
-  exports: [NavbarComponent]
+  declarations: [
+    SidenavComponent,
+    ToolbarComponent
+  ],
+  exports: [
+    SidenavComponent,
+    ToolbarComponent,
+    MaterialModule
+  ],
+  providers: [
+    SidenavService,
+    ThemeService
+  ]
 })
 export class SharedModule {}
