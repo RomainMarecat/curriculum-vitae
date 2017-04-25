@@ -5,7 +5,7 @@ export class NavbarService {
 
   constructor() { }
 
-  getSideNavData(): Object {
+  getSideNavData(): any {
     return {
       name: `Romain Marecat`,
       email: `romain.marecat@gmail.com`,

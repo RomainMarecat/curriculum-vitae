@@ -15,7 +15,9 @@ export class AboutComponent implements OnInit {
       job1: `Développeur Web Angular 2`,
       job2: `Développeur Web Symfony 2 et 3`,
       year: 1,
-      description: `Développement d'une application mobile et plus rapide qui traite la réservation et la gestion des agendas de moniteurs de ski basée sur le Framework Angular (2).`,
+      description: `Développement d'une application mobile
+      et plus rapide qui traite la réservation
+      et la gestion des agendas de moniteurs de ski basée sur le Framework Angular (2).`,
       description2: `
       <ul>
         <li>Ajout d'une application pour les moniteurs (Angular)</li>
@@ -55,7 +57,10 @@ export class AboutComponent implements OnInit {
       title: `Square Connexion`,
       year: 2,
       job1: `Développeur Web Symfony 2 et AngularJs`,
-      description: `Tootici.fr est un projet lancé par le Crédit Agricole en 2011. Le site est devenu à mon arrivé une place de marché e-commerce spécialisé dans les produits régionaux de petits commerçants. Le développement du site est basé sous le Framework Symfony 2.7.`,
+      description: `Tootici.fr est un projet lancé par le Crédit Agricole en 2011.
+      Le site est devenu à mon arrivé une place de marché e-commerce spécialisé
+      dans les produits régionaux de petits commerçants.
+      Le développement du site est basé sous le Framework Symfony 2.7.`,
       description2: `<p>Refonte du site en API Rest :</p>
       <ul>
         <li>Intégrer un moteur de recherche Solr, ElasticSearch, Sphinx.</li>

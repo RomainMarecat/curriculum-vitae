@@ -5,7 +5,7 @@ export class ToolbarService {
 
   constructor() { }
 
-  getToolbarData(): Object {
+  getToolbarData(): any {
     return {
       title: `Curriculum Vitae`,
     };

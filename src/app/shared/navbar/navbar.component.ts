@@ -9,8 +9,8 @@ import { ToolbarService } from './../service/toolbar.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  sidenav: Object;
-  toolbar: Object;
+  sidenav: any;
+  toolbar: any;
 
   constructor(private router: Router,
     private navbarService: NavbarService,

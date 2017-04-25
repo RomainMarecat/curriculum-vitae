@@ -5,7 +5,7 @@ import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path: '', component: ResumeComponent },
-  { path: 'experiences', component: AboutComponent },
+  { path: 'experience', component: AboutComponent },
   { path: '**', component: ResumeComponent },
 ];
 
