@@ -1,2 +1,10 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<app-toolbar (sidenavEvent)="sidenav.toggle()">
+</app-toolbar>
+<md-sidenav-container fullscreen class="app-sidenav-container">
+  <md-sidenav class="md-sidenav" #sidenav mode="side" opened="false" fxLayout="column" fxLayoutAlign="start stretch">
+    <app-sidenav></app-sidenav>
+  </md-sidenav>
+  <main #main class="router-container mat-sidenav-container">
+    <router-outlet></router-outlet>
+  </main>
+</md-sidenav-container>

@@ -6,19 +6,24 @@
 }
 
 $about-img-background: "/assets/images/about-bg-2.jpg";
-.section:before {
-    content: "";
-    position: absolute;
-    background-color: black;
-    opacity: 0.5;
-    z-index: 100;
-    width: 100%;
+// .section:before {
+//     content: "";
+//     position: absolute;
+//     background-color: black;
+//     opacity: 0.5;
+//     z-index: 100;
+//     width: 100%;
+//     height: 100%;
+//     margin-top: 64px;
+//     top: 0;
+//     bottom: 0;
+// }
+.about {
     height: 100%;
-    top: 0;
-    bottom: 0;
 }
 
 .section {
+    overflow: hidden;
     @include background-size(cover);
     background-color: black;
     background: {
@@ -29,7 +34,7 @@ $about-img-background: "/assets/images/about-bg-2.jpg";
     h1 {
         position: relative;
         z-index: 200;
-        font-size: 8rem;
+        font-size: 6rem;
         font-family: Roboto, sans-serif;
         font-weight: 700;
         line-height: 1;

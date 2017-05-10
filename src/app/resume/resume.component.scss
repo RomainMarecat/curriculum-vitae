@@ -17,17 +17,19 @@
     display: inline-block;
     vertical-align: top;
     zoom: 1;
-    *display: inline;
 }
 
 $secondary-font-family-bold: "Josefin Slab Bold";
 $base-font-color-light: #fff;
 $hero-img-background: "/assets/images/hero-bg.png";
 .jumbotron {
+    @include border-radius(0);
     @include background-size(cover);
+    height: inherit;
+    min-height: 100%;
     background: {
         image: url($hero-img-background);
-        repeat: no-repeat;
+        repeat: repeat-y;
         position: top center;
     }
     padding-top: 125px;

@@ -1,18 +1,18 @@
-<div class="section background">
-  <div class="layer">
+<div class="section about">
+  <div class="container">
     <div class="row">
-      <div class="col s12">
-        <h1 class="center white-text">Mon expérience</h1>
+      <div class="col-12">
+        <h1 class="text-center white-text">Mon expérience</h1>
       </div>
     </div>
     <div class="container">
       <div class="row">
-        <div class="col s12 m6" *ngFor="let exp of experiences">
+        <div class="col-sm-12 col-md-6" *ngFor="let exp of experiences">
           <div class="card">
-            <div class="card-image waves-effect waves-block waves-light center-block">
-              <img class="activator responsive-img" [src]="exp.img.src" [alt]="exp.img.alt" angulartics2On="click" angularticsEvent="CardRevealClick" angularticsCategory="{{ exp.img.alt }}">
+            <div class="card-image waves-effect waves-block waves-light text-center">
+              <img class="activator img-fluid responsive-img" [src]="exp.img.src" [alt]="exp.img.alt" angulartics2On="click" angularticsEvent="CardRevealClick" angularticsCategory="{{ exp.img.alt }}">
             </div>
-            <div class="card-content activator center">
+            <div class="card-content activator text-center">
               <span class="card-title black-text lighten-2">{{ exp.title }}</span>
               <p class="activator" angulartics2On="click" angularticsEvent="CardRevealClick" angularticsCategory="{{ exp.job1 }}">
                 {{ exp.job1 }}
@@ -24,14 +24,14 @@
                 <span *ngIf="exp.month"> - {{ exp.month }} mois</span>
               </p>
             </div>
-            <div class="card-reveal">
+            <!--             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">
                 {{ exp.title }}
                 <i class="material-icons right">close</i>
               </span>
               <p>{{ exp.description }}</p>
               <div [innerHtml]="exp.description2" *ngIf="exp.description2"></div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

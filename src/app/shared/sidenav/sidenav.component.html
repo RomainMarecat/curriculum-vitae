@@ -1,0 +1,25 @@
+<!-- <ul class="side-nav">
+
+  <li> -->
+<!-- <div class="userView"> -->
+<!--       <div class="background">
+        <img class="img-fluid" src="assets/images/sidenav-bg.jpg">
+      </div> -->
+<md-nav-list>
+  <a md-list-item [routerLink]="'/'" angulartics2On="click" angularticsEvent="HomepageClick" angularticsCategory="{{ sidenav.src }}">
+    <img class="img-fluid circle" [src]="sidenav.src" *ngIf="sidenav">
+  </a>
+  <a md-list-item [routerLink]="'/'" angulartics2On="click" angularticsEvent="HomepageClick" angularticsCategory="{{ sidenav.name }}">
+    <span class="white-text name" *ngIf="sidenav">{{ sidenav.name }}</span>
+  </a>
+  <a md-list-item [routerLink]="'/'" angulartics2On="click" angularticsEvent="HomepageClick" angularticsCategory="{{ sidenav.email }}">
+    <span class="white-text email" *ngIf="sidenav">{{ sidenav.email }}</span>
+  </a>
+  <a md-list-item [routerLink]="['/experience']" angulartics2On="click" angularticsEvent="ExperiencePageClick" angularticsCategory="Mon Expérience">Mon Expérience</a>
+</md-nav-list>
+<!--     </div>
+  </li>
+  <li> -->
+<!--   </li>
+</ul>
+ -->

@@ -1,0 +1,10 @@
+<md-toolbar color="primary">
+  <a md-button (click)="toggleSidenav()" angulartics2On="click" angularticsEvent="BurgerNavToggle" angularticsCategory="Sidenav">
+    <i class="material-icons white-text">menu</i>
+  </a>
+  <span>
+    <a [routerLink]="['/']" class="brand-logo center" angulartics2On="click" angularticsEvent="HomepageClick" angularticsCategory="{{ toolbar.title }}">
+      {{ toolbar.title }}
+    </a>
+  </span>
+</md-toolbar>
